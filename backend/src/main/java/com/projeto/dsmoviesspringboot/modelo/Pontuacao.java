@@ -1,18 +1,23 @@
 
 package com.projeto.dsmoviesspringboot.modelo;
 
+import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_score")
-public class Pontuacao {
+public class Pontuacao implements Serializable {
+    
     
     // quando a pk é composta instanciar para garantir que será iniciada
-    @EmbeddedId
-    private PontuacaoPK id = new PontuacaoPK();
-    private Double value;
+    @EmbeddedId //indica que é uma chave composta
+    private PontuacaoPK id = new PontuacaoPK(); // é como se fosse duas referencias em uma
+    
+    @Column(name = "value")
+    private Double valor;
 
     public Pontuacao() {
     }
@@ -33,12 +38,12 @@ public class Pontuacao {
         this.id = id;
     }
 
-    public Double getValue() {
-        return value;
+    public Double getValor() {
+        return valor;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
     
 }

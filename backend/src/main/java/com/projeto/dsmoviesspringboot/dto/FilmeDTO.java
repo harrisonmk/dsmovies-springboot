@@ -1,45 +1,25 @@
-package com.projeto.dsmoviesspringboot.modelo;
+package com.projeto.dsmoviesspringboot.dto;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.projeto.dsmoviesspringboot.modelo.Filme;
 
-@Entity
-@Table(name = "tb_movie")
-public class Filme implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
+public class FilmeDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
     private String titulo;
 
-    @Column(name = "score")
     private Double pontuacao;
 
-    @Column(name = "count")
     private Integer contador;
 
-    @Column(name = "image")
     private String imagem;
 
-    @OneToMany(mappedBy = "id.filme") //um filme possui varias pontuacoes
-    private Set<Pontuacao> pontuacoes = new HashSet<>();
-
-    public Filme() {
+    
+    
+    public FilmeDTO() {
     }
 
-    public Filme(Long id, String titulo, Double pontuacao, Integer contador, String imagem) {
+    public FilmeDTO(Long id, String titulo, Double pontuacao, Integer contador, String imagem) {
         this.id = id;
         this.titulo = titulo;
         this.pontuacao = pontuacao;
@@ -47,6 +27,18 @@ public class Filme implements Serializable {
         this.imagem = imagem;
     }
 
+    //	mandar uma copia para a entidade
+    public FilmeDTO(Filme filme) {
+        id = filme.getId();
+        titulo = filme.getTitulo();
+        pontuacao = filme.getPontuacao();
+        contador = filme.getContador();
+        imagem = filme.getImagem();
+    }
+
+    
+    
+    
     public Long getId() {
         return id;
     }
@@ -87,11 +79,7 @@ public class Filme implements Serializable {
         this.imagem = imagem;
     }
 
-    public Set<Pontuacao> getScores() {
-        return pontuacoes;
-    }
     
     
     
-
 }
