@@ -24,6 +24,7 @@ public class PontuacaoServico {
     @Autowired
     private PontuacaoRepositorio PontuacaoRepositorio;
 
+    
     @Transactional
     public FilmeDTO saveScore(PontuacaoDTO dto) {
         Usuario usuario = usuarioRepositorio.findByEmail(dto.getEmail());
