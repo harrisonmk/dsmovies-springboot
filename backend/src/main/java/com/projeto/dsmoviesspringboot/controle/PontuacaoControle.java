@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping(value = "/scores")
 public class PontuacaoControle {
@@ -18,6 +19,7 @@ public class PontuacaoControle {
 
     
     //metodo para editar a pontuacao de um filme
+    
     @PutMapping
     public FilmeDTO saveScore(@RequestBody PontuacaoDTO dto) {
         FilmeDTO movieDTO = service.saveScore(dto);

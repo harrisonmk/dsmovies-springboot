@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 @RestController
 @RequestMapping(value = "/movies")
 public class FilmeControle {
@@ -19,14 +21,14 @@ public class FilmeControle {
     @Autowired
     private FilmeServico service;
 
-    //metodo para retornar uma pagina de filmes
+    //metodo para retornar uma pagina de filmes 
     @GetMapping
     public Page<FilmeDTO> findAll(Pageable pageable) {
         return service.findAll(pageable);
     }
 
     
-    //metodo para retornar apenas um filme por id
+    //metodo para retornar apenas um filme por id 
     @GetMapping(value = "/{id}")
     public FilmeDTO findById(@PathVariable Long id) {
         return service.findById(id);
